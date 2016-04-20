@@ -8,6 +8,7 @@ import os
 import csv
 from pprint import pprint
 import elasticsearch.helpers
+import time
 
 ES_INDEX = os.environ.get("ES_INDEX", "threesixtygiving")
 
@@ -148,6 +149,8 @@ def import_to_elasticsearch(files, clean):
         print('Updating existing index')
     else:
         pprint(result)
+
+    time.sleep(1)
 
     get_mapping_from_index(es)
 
